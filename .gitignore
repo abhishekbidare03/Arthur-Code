@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# packaging / test artifacts
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.LOGS.md
+.PLAN.md

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arthur-cli"
+version = "0.1.0"
+description = "A hand-built coding agent that gates its own file writes behind a confidence check."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Levi" }]
+keywords = ["agent", "llm", "ollama", "code-generation", "cli"]
+
+# Deliberately tiny. The mock backend needs nothing at all; ollama and gemini
+# are both plain HTTP, so there is no vendor SDK here -- the point of the
+# project is that the mechanism is visible, and a dependency list you can read
+# in one line is part of that.
+dependencies = [
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+# The interactive session's terminal rendering. Kept optional so `arthur -p`
+# and `arthur doctor` still work on a bare install.
+repl = [
+    "prompt_toolkit>=3.0",
+    "rich>=13.0",
+]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.scripts]
+arthur = "arthur.cli:main"
+
+[tool.setuptools]
+packages = ["arthur"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

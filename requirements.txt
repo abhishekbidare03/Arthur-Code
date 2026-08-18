@@ -1,0 +1,5 @@
+# Zero dependencies needed to run with BACKEND = "mock" in config.py
+
+# Needed for BACKEND = "ollama" (local, offline) AND BACKEND = "gemini" (cloud):
+# both backends are plain HTTP calls, so there is no vendor SDK to install.
+requests>=2.31
